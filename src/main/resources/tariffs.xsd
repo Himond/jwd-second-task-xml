@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/tariffs"
+        xmlns:tns="http://www.exemple.com/tariffs"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+    <element name="Tariffs">
+        <complexType>
+            <sequence>
+                <element name="tariff" type="tns:Tariff" minOccurs="2" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Tariff">
+        <sequence>
+            <element name="payroll" type="positiveInteger"/>
+            <element name="connection-pay" type="positiveInteger"/>
+            <xs:element name="introduction-time" type="xs:date"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="mobileTariff">
+        <complexContent>
+            <extension base="tns:Tariff">
+                <element name="call-price" type="tns:callPrice"/>
+                <attribute name="tariff-code" type="tns:tariffCode" use="required"/>
+                <attribute name="operator-name" use="optional" default="vel">
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="vel"/>
+                            <enumeration value="mts"/>
+                            <enumeration value="life"/>
+                        </restriction>
+                    </simpleType>
+                </attribute>
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <complexType name="internetTariff">
+        <complexContent>
+            <extension base="tns:Tariff">
+                <element name="internet-traffic" type="positiveInteger"/>
+            </extension>
+        </complexContent>
+    </complexType>
+
+
+    <complexType name="callPrice">
+        <sequence>
+            <element name="tariffication" type="positiveInteger"/>
+            <element name="within-the-network" type="double"/>
+            <element name="offline" type="double"/>
+            <element name="city-network" type="double"/>
+        </sequence>
+    </complexType>
+
+    <simpleTupe name="tariffCode">
+        <restriction base="ID">
+            <pattern value="[a-z]{1,4}\\d{8}"/>
+        </restriction>
+    </simpleTupe>
+
+
+    <element name="tariff" type="tns:Tariff" abstract="true"/>
+    <element name="internet-tariff" type="tns:internetTariff" substitutionGroup="tns:Tariff"/>
+    <element name="mobile-tariff" type="tns:mobileTariff" substitutionGroup="tns:Tariff"/>
+
+
+</schema>
