@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.example.com/tariffs"
-        xmlns:tns="http://www.exemple.com/tariffs"
+        targetNamespace="http://www.example.org/tariffs"
+        xmlns:tns="http://www.exemple.org/tariffs"
         xmlns:xs="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified">
 
@@ -12,6 +12,10 @@
             </sequence>
         </complexType>
     </element>
+
+    <element name="tariff" type="tns:Tariff" abstract="true"/>
+    <element name="internet-tariff" type="tns:internetTariff" substitutionGroup="tns:Tariff"/>
+    <element name="mobile-tariff" type="tns:mobileTariff" substitutionGroup="tns:Tariff"/>
 
     <complexType name="Tariff">
         <sequence>
@@ -29,9 +33,11 @@
                 <attribute name="operator-name" use="optional" default="vel">
                     <simpleType>
                         <restriction base="string">
-                            <enumeration value="vel"/>
+                            <enumeration value="A1"/>
                             <enumeration value="mts"/>
                             <enumeration value="life"/>
+                            <enumeration value="beeline"/>
+                            <enumeration value="megafon"/>
                         </restriction>
                     </simpleType>
                 </attribute>
@@ -60,14 +66,12 @@
 
     <simpleTupe name="tariffCode">
         <restriction base="ID">
-            <pattern value="[a-z]{1,4}\\d{8}"/>
+            <pattern value="[a-z]\\d{4}"/>
         </restriction>
     </simpleTupe>
 
 
-    <element name="tariff" type="tns:Tariff" abstract="true"/>
-    <element name="internet-tariff" type="tns:internetTariff" substitutionGroup="tns:Tariff"/>
-    <element name="mobile-tariff" type="tns:mobileTariff" substitutionGroup="tns:Tariff"/>
+
 
 
 </schema>
