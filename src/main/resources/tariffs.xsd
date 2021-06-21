@@ -30,7 +30,7 @@
             <extension base="tns:Tariff">
                 <element name="call-price" type="tns:callPrice"/>
                 <attribute name="tariff-code" type="tns:tariffCode" use="required"/>
-                <attribute name="operator-name" use="optional" default="vel">
+                <attribute name="operator-name" use="optional" default="A1">
                     <simpleType>
                         <restriction base="string">
                             <enumeration value="A1"/>
@@ -69,9 +69,6 @@
             <pattern value="[a-z]\\d{4}"/>
         </restriction>
     </simpleTupe>
-
-
-
 
 
 </schema>
