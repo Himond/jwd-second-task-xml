@@ -1,7 +1,5 @@
 package by.training.xml.entity;
 
-import java.util.Objects;
-
 public class CallPrice {
 
     private int tariffication;

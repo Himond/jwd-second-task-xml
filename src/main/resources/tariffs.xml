@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tariffs >
 
-    <mobileTariff tarifCode="m1111" operator-name="mts">
+<tarrifs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.example.com/tariffs"
+          xsi:schemaLocation="http://www.example.org/tarrifs ../resources/tariffs.xsd">
+
+    <mobileTariff tarifCode="m1111" operator-name="MTS">
         <payroll>25</payroll>
         <connection-pay>5</connection-pay>
         <introduction-time>2020-03-23</introduction-time>
@@ -26,7 +29,7 @@
     </mobileTariff>
 
 
-    <mobileTariff tarifCode="l1311" operator-name="life">
+    <mobileTariff tarifCode="l1311" operator-name="LIFE">
         <payroll>30</payroll>
         <connection-pay>3</connection-pay>
         <introduction-time>2021-02-12</introduction-time>
@@ -51,7 +54,7 @@
         </call-price>
     </mobileTariff>
 
-    <mobileTariff tarifCode="v3334" operator-name="beeline">
+    <mobileTariff tarifCode="v3334" operator-name="BEELINE">
         <payroll>15</payroll>
         <connection-pay>1</connection-pay>
         <introduction-time>2021-02-12</introduction-time>
@@ -64,7 +67,7 @@
     </mobileTariff>
 
 
-    <mobileTariff tarifCode="a9852" operator-name="megafon">
+    <mobileTariff tarifCode="a9852" operator-name="A1">
         <payroll>25</payroll>
         <connection-pay>10</connection-pay>
         <introduction-time>2021-03-13</introduction-time>
@@ -76,7 +79,7 @@
         </call-price>
     </mobileTariff>
 
-    <mobileTariff tarifCode="n9123" operator-name="beeline">
+    <mobileTariff tarifCode="n9123" operator-name="BEELINE">
         <payroll>30</payroll>
         <connection-pay>20</connection-pay>
         <introduction-time>2021-01-01</introduction-time>
@@ -100,7 +103,7 @@
         </call-price>
     </mobileTariff>
 
-    <mobileTariff tarifCode="i3334" operator-name="beeline">
+    <mobileTariff tarifCode="i3334" operator-name="BEELINE">
         <payroll>34</payroll>
         <connection-pay>12</connection-pay>
         <introduction-time>2019-02-24</introduction-time>
@@ -124,7 +127,7 @@
         </call-price>
     </mobileTariff>
 
-    <mobileTariff tarifCode="v6788" operator-name="mts">
+    <mobileTariff tarifCode="v6788" operator-name="MTS">
         <payroll>80</payroll>
         <connection-pay>20</connection-pay>
         <introduction-time>2021-03-13</introduction-time>
@@ -141,6 +144,7 @@
         <connection-pay>5</connection-pay>
         <introduction-time>2020-04-15</introduction-time>
         <internet-traffic>500</internet-traffic>
+        <transmission-speed>512</transmission-speed>
     </internetTariff>
 
     <internetTariff>
@@ -148,6 +152,7 @@
         <connection-pay>10</connection-pay>
         <introduction-time>2021-12-12</introduction-time>
         <internet-traffic>750</internet-traffic>
+        <transmission-speed>512</transmission-speed>
     </internetTariff>
 
 
@@ -156,6 +161,7 @@
         <connection-pay>5</connection-pay>
         <introduction-time>2019-01-12</introduction-time>
         <internet-traffic>1000</internet-traffic>
+        <transmission-speed>512</transmission-speed>
     </internetTariff>
 
     <internetTariff>
@@ -163,6 +169,7 @@
         <connection-pay>20</connection-pay>
         <introduction-time>2021-03-06</introduction-time>
         <internet-traffic>2000</internet-traffic>
+        <transmission-speed>5000</transmission-speed>
     </internetTariff>
 
     <internetTariff>
@@ -170,7 +177,7 @@
         <connection-pay>25</connection-pay>
         <introduction-time>2021-02-11</introduction-time>
         <internet-traffic>5000</internet-traffic>
+        <transmission-speed>12500</transmission-speed>
     </internetTariff>
 
-
-</tariffs>
+</tarrifs>

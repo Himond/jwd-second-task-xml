@@ -1,7 +1,6 @@
 package by.training.xml.entity;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public abstract class Tariff {
 
@@ -47,7 +46,20 @@ public abstract class Tariff {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tariff tariff = (Tariff) o;
-        return payroll == tariff.payroll && connectionPay == tariff.connectionPay && Objects.equals(introductionTime, tariff.introductionTime);
+        if(payroll != tariff.payroll){
+            return false;
+        }
+        if (connectionPay != tariff.connectionPay){
+            return false;
+        }
+        if (introductionTime == null){
+            if(tariff.introductionTime != null){
+                return false;
+            }
+        }else if(!introductionTime.equals(tariff.introductionTime)){
+            return false;
+        }
+        return true;
     }
 
     @Override

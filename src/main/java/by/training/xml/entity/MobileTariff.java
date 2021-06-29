@@ -1,7 +1,6 @@
 package by.training.xml.entity;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class MobileTariff extends Tariff{
 
@@ -10,6 +9,7 @@ public class MobileTariff extends Tariff{
     private OperatorName operator;
 
     public MobileTariff() {
+        operator = OperatorName.A1;
     }
 
     public MobileTariff(int payroll, int connectionPay, LocalDate introductionTime, CallPrice callPrice, String tariffCode, OperatorName operator) {
@@ -49,12 +49,39 @@ public class MobileTariff extends Tariff{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         MobileTariff that = (MobileTariff) o;
-        return Objects.equals(callPrice, that.callPrice) && Objects.equals(tariffCode, that.tariffCode) && operator == that.operator;
+        if (callPrice == null){
+            if(that.callPrice != null){
+                return false;
+            }
+        }else if(!callPrice.equals(that.callPrice)){
+            return false;
+        }
+        if (tariffCode == null){
+            if(that.tariffCode != null){
+                return false;
+            }
+        }else if(!tariffCode.equals(that.tariffCode)){
+            return false;
+        }
+        if (operator == null){
+            if(that.operator != null){
+                return false;
+            }
+        }else if(!operator.equals(that.operator)){
+            return false;
+        }
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), callPrice, tariffCode, operator);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + super.hashCode();
+        result = prime * result +  ((callPrice == null) ? 0 : callPrice.hashCode());
+        result = prime * result +  ((tariffCode == null) ? 0 : tariffCode.hashCode());
+        result = prime * result +  ((operator == null) ? 0 : operator.hashCode());
+        return result;
     }
 
     @Override

@@ -5,7 +5,7 @@
         xmlns:xs="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified">
 
-    <element name="Tariffs">
+    <element name="tariffs">
         <complexType>
             <sequence>
                 <element name="tariff" type="tns:Tariff" minOccurs="2" maxOccurs="unbounded"/>
@@ -34,10 +34,9 @@
                     <simpleType>
                         <restriction base="string">
                             <enumeration value="A1"/>
-                            <enumeration value="mts"/>
-                            <enumeration value="life"/>
-                            <enumeration value="beeline"/>
-                            <enumeration value="megafon"/>
+                            <enumeration value="MTS"/>
+                            <enumeration value="LIFE"/>
+                            <enumeration value="BEELINE"/>
                         </restriction>
                     </simpleType>
                 </attribute>
@@ -50,6 +49,7 @@
         <complexContent>
             <extension base="tns:Tariff">
                 <element name="internet-traffic" type="positiveInteger"/>
+                <element name="transmission-speed" type="positiveInteger"/>
             </extension>
         </complexContent>
     </complexType>
