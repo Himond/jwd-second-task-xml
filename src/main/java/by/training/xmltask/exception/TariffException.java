@@ -1,4 +1,4 @@
-package by.training.xml.exception;
+package by.training.xmltask.exception;
 
 public class TariffException extends Exception{
 

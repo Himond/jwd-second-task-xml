@@ -1,7 +1,7 @@
-package by.training.xml.test;
+package by.training.xmltask.test;
 
-import by.training.xml.exception.TariffException;
-import by.training.xml.validator.TariffXmlValidator;
+import by.training.xmltask.exception.TariffException;
+import by.training.xmltask.validator.TariffXmlValidator;
 import org.junit.Assert;
 import org.junit.Test;
 

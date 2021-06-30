@@ -1,0 +1,13 @@
+12:31:44.208 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 103 : 22 - cvc-complex-type.2.4.b: The content of element 'call-price' is not complete. One of '{"http://www.example.com/tariffs":city-network}' is expected.
+12:35:40.736 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 103 : 22 - cvc-complex-type.2.4.b: The content of element 'call-price' is not complete. One of '{"http://www.example.com/tariffs":city-network}' is expected.
+12:35:52.605 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 94 : 55 - cvc-pattern-valid: Value 'a' is not facet-valid with respect to pattern '[a-z]\d{4,8}' for type 'tariffCode'.
+12:35:52.607 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 94 : 55 - cvc-attribute.3: The value 'a' of attribute 'tariff-code' on element 'mobile-tariff' is not valid with respect to its type, 'tariffCode'.
+12:36:18.175 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 94 : 55 - cvc-pattern-valid: Value 'a' is not facet-valid with respect to pattern '[a-z]\d{4,8}' for type 'tariffCode'.
+12:36:18.177 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 94 : 55 - cvc-attribute.3: The value 'a' of attribute 'tariff-code' on element 'mobile-tariff' is not valid with respect to its type, 'tariffCode'.
+12:37:49.128 [main] FATAL by.training.xmltask.handler.TariffErrorHandler - 1 : 1 - Premature end of file.
+12:37:49.130 [main] ERROR by.training.xmltask.validator.TariffXmlValidator - File src\main\resources\tariffs.xml is not valid:
+12:39:01.482 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 7 : 63 - cvc-complex-type.2.4.a: Invalid content was found starting with element '{"http://www.example.com/tariffs":train-tariff}'. One of '{"http://www.example.com/tariffs":tariff}' is expected.
+12:40:43.427 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 19 : 61 - cvc-id.2: There are multiple occurrences of ID value 'v1211'.
+12:40:43.429 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 19 : 61 - cvc-attribute.3: The value 'v1211' of attribute 'tariff-code' on element 'mobile-tariff' is not valid with respect to its type, 'tariffCode'.
+12:41:06.482 [main] FATAL by.training.xmltask.handler.TariffErrorHandler - 17 : 7 - The element type "call-price" must be terminated by the matching end-tag "</call-price>".
+12:41:06.484 [main] ERROR by.training.xmltask.validator.TariffXmlValidator - File src\main\resources\tariffs.xml is not valid:

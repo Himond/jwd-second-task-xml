@@ -1,4 +1,4 @@
-package by.training.xml.entity;
+package by.training.xmltask.entity;
 
 import java.time.LocalDate;
 

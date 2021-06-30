@@ -1,4 +1,4 @@
-package by.training.xml.validator;
+package by.training.xmltask.validator;
 
 import java.io.*;
 import javax.xml.XMLConstants;
@@ -8,8 +8,8 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
-import by.training.xml.exception.TariffException;
-import by.training.xml.handler.TariffErrorHandler;
+import by.training.xmltask.exception.TariffException;
+import by.training.xmltask.handler.TariffErrorHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;

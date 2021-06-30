@@ -1,4 +1,4 @@
-package by.training.xml.handler;
+package by.training.xmltask.handler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
