@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.example.org/tariffs"
-        xmlns:tns="http://www.exemple.org/tariffs"
+        targetNamespace="http://www.example.com/tariffs"
+        xmlns:tns="http://www.example.com/tariffs"
         xmlns:xs="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified">
 
     <element name="tariffs">
         <complexType>
             <sequence>
-                <element name="tariff" type="tns:Tariff" minOccurs="2" maxOccurs="unbounded"/>
+                <element ref="tns:tariff" minOccurs="1" maxOccurs="unbounded"/>
             </sequence>
         </complexType>
     </element>
 
     <element name="tariff" type="tns:Tariff" abstract="true"/>
-    <element name="internet-tariff" type="tns:internetTariff" substitutionGroup="tns:Tariff"/>
-    <element name="mobile-tariff" type="tns:mobileTariff" substitutionGroup="tns:Tariff"/>
+    <element name="internet-tariff" type="tns:internetTariff" substitutionGroup="tns:tariff"/>
+    <element name="mobile-tariff" type="tns:mobileTariff" substitutionGroup="tns:tariff"/>
 
     <complexType name="Tariff">
         <sequence>
@@ -28,7 +28,9 @@
     <complexType name="mobileTariff">
         <complexContent>
             <extension base="tns:Tariff">
-                <element name="call-price" type="tns:callPrice"/>
+                <sequence>
+                    <element name="call-price" type="tns:callPrice"/>
+                </sequence>
                 <attribute name="tariff-code" type="tns:tariffCode" use="required"/>
                 <attribute name="operator-name" use="optional" default="A1">
                     <simpleType>
@@ -44,12 +46,13 @@
         </complexContent>
     </complexType>
 
-
     <complexType name="internetTariff">
         <complexContent>
             <extension base="tns:Tariff">
-                <element name="internet-traffic" type="positiveInteger"/>
-                <element name="transmission-speed" type="positiveInteger"/>
+                <sequence>
+                    <element name="internet-traffic" type="positiveInteger"/>
+                    <element name="transmission-speed" type="positiveInteger"/>
+                </sequence>
             </extension>
         </complexContent>
     </complexType>
@@ -64,11 +67,11 @@
         </sequence>
     </complexType>
 
-    <simpleTupe name="tariffCode">
+    <simpleType name="tariffCode">
         <restriction base="ID">
-            <pattern value="[a-z]\\d{4}"/>
+            <pattern value="[a-z]\d{4,8}"/>
         </restriction>
-    </simpleTupe>
+    </simpleType>
 
 
 </schema>

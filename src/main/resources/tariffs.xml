@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<tarrifs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<tariffs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns="http://www.example.com/tariffs"
-          xsi:schemaLocation="http://www.example.org/tarrifs ../resources/tariffs.xsd">
+          xsi:schemaLocation="http://www.example.сom/tariffs tariffs.xsd">
 
-    <mobileTariff tarifCode="m1111" operator-name="MTS">
+    <mobile-tariff tariff-code="a22453322" operator-name="MTS">
         <payroll>25</payroll>
         <connection-pay>5</connection-pay>
         <introduction-time>2020-03-23</introduction-time>
         <call-price>
-            <tariffication>12</tariffication>
-            <within-the-network>0.2</within-the-network>
-            <offline>0.5</offline>
-            <city-network>0.8</city-network>
+            <tariffication>20</tariffication>
+            <within-the-network>0.1</within-the-network>
+            <offline>0.2</offline>
+            <city-network>0.5</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
-    <mobileTariff tarifCode="v1211" operator-name="A1">
+    <mobile-tariff tariff-code="v1211" operator-name="LIFE">
         <payroll>30</payroll>
         <connection-pay>1</connection-pay>
         <introduction-time>2021-02-12</introduction-time>
@@ -26,10 +26,10 @@
             <offline>1.5</offline>
             <city-network>2.1</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
 
-    <mobileTariff tarifCode="l1311" operator-name="LIFE">
+    <mobile-tariff tariff-code="l1311" operator-name="LIFE">
         <payroll>30</payroll>
         <connection-pay>3</connection-pay>
         <introduction-time>2021-02-12</introduction-time>
@@ -39,10 +39,10 @@
             <offline>0.8</offline>
             <city-network>1.2</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
 
-    <mobileTariff tarifCode="v2223" operator-name="A1">
+    <mobile-tariff tariff-code="v2223" operator-name="A1">
         <payroll>30</payroll>
         <connection-pay>1</connection-pay>
         <introduction-time>2021-02-12</introduction-time>
@@ -52,9 +52,9 @@
             <offline>0.5</offline>
             <city-network>1.3</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
-    <mobileTariff tarifCode="v3334" operator-name="BEELINE">
+    <mobile-tariff tariff-code="v3334" operator-name="BEELINE">
         <payroll>15</payroll>
         <connection-pay>1</connection-pay>
         <introduction-time>2021-02-12</introduction-time>
@@ -64,10 +64,10 @@
             <offline>0.4</offline>
             <city-network>0.6</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
 
-    <mobileTariff tarifCode="a9852" operator-name="A1">
+    <mobile-tariff tariff-code="a985267" operator-name="BEELINE">
         <payroll>25</payroll>
         <connection-pay>10</connection-pay>
         <introduction-time>2021-03-13</introduction-time>
@@ -77,9 +77,9 @@
             <offline>0.45</offline>
             <city-network>0.65</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
-    <mobileTariff tarifCode="n9123" operator-name="BEELINE">
+    <mobile-tariff tariff-code="n912332" operator-name="BEELINE">
         <payroll>30</payroll>
         <connection-pay>20</connection-pay>
         <introduction-time>2021-01-01</introduction-time>
@@ -89,9 +89,9 @@
             <offline>0.3</offline>
             <city-network>0.3</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
-    <mobileTariff tarifCode="t7777" operator-name="A1">
+    <mobile-tariff tariff-code="t7777" operator-name="A1">
         <payroll>60</payroll>
         <connection-pay>1</connection-pay>
         <introduction-time>2020-07-07</introduction-time>
@@ -101,9 +101,9 @@
             <offline>0.2</offline>
             <city-network>0.3</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
-    <mobileTariff tarifCode="i3334" operator-name="BEELINE">
+    <mobile-tariff tariff-code="i3334" operator-name="BEELINE">
         <payroll>34</payroll>
         <connection-pay>12</connection-pay>
         <introduction-time>2019-02-24</introduction-time>
@@ -113,9 +113,9 @@
             <offline>0.4</offline>
             <city-network>0.6</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
-    <mobileTariff tarifCode="d1258" operator-name="A1">
+    <mobile-tariff tariff-code="d125833" operator-name="A1">
         <payroll>45</payroll>
         <connection-pay>20</connection-pay>
         <introduction-time>2020-03-25</introduction-time>
@@ -125,9 +125,9 @@
             <offline>0.4</offline>
             <city-network>0.6</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
-    <mobileTariff tarifCode="v6788" operator-name="MTS">
+    <mobile-tariff tariff-code="v6788" operator-name="MTS">
         <payroll>80</payroll>
         <connection-pay>20</connection-pay>
         <introduction-time>2021-03-13</introduction-time>
@@ -137,47 +137,47 @@
             <offline>0.0</offline>
             <city-network>0.0</city-network>
         </call-price>
-    </mobileTariff>
+    </mobile-tariff>
 
-    <internetTariff>
+    <internet-tariff>
         <payroll>20</payroll>
         <connection-pay>5</connection-pay>
         <introduction-time>2020-04-15</introduction-time>
         <internet-traffic>500</internet-traffic>
         <transmission-speed>512</transmission-speed>
-    </internetTariff>
+    </internet-tariff>
 
-    <internetTariff>
+    <internet-tariff>
         <payroll>50</payroll>
         <connection-pay>10</connection-pay>
         <introduction-time>2021-12-12</introduction-time>
         <internet-traffic>750</internet-traffic>
         <transmission-speed>512</transmission-speed>
-    </internetTariff>
+    </internet-tariff>
 
 
-    <internetTariff>
+    <internet-tariff>
         <payroll>30</payroll>
         <connection-pay>5</connection-pay>
         <introduction-time>2019-01-12</introduction-time>
         <internet-traffic>1000</internet-traffic>
         <transmission-speed>512</transmission-speed>
-    </internetTariff>
+    </internet-tariff>
 
-    <internetTariff>
+    <internet-tariff>
         <payroll>55</payroll>
         <connection-pay>20</connection-pay>
         <introduction-time>2021-03-06</introduction-time>
         <internet-traffic>2000</internet-traffic>
         <transmission-speed>5000</transmission-speed>
-    </internetTariff>
+    </internet-tariff>
 
-    <internetTariff>
+    <internet-tariff>
         <payroll>65</payroll>
         <connection-pay>25</connection-pay>
         <introduction-time>2021-02-11</introduction-time>
         <internet-traffic>5000</internet-traffic>
         <transmission-speed>12500</transmission-speed>
-    </internetTariff>
+    </internet-tariff>
 
-</tarrifs>
+</tariffs>
