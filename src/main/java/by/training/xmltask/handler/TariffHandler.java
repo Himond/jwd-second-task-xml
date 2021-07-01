@@ -1,33 +1,132 @@
 package by.training.xmltask.handler;
 
+import by.training.xmltask.entity.InternetTariff;
+import by.training.xmltask.entity.MobileTariff;
+import by.training.xmltask.entity.OperatorName;
+import by.training.xmltask.entity.Tariff;
+import by.training.xmltask.exception.TariffException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+
+import java.time.LocalDate;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.Set;
+
 public class TariffHandler extends DefaultHandler {
+    private Set<Tariff> tariffs;
+    private EnumSet<TariffXMLTag> tagsWithText;
+    private Tariff currentTariff;
+    private TariffXMLTag currentXmlTag;
 
-    @Override
-    public void startDocument() throws SAXException {
-        super.startDocument();
+    private static final char REPLACE_CHAR = '_';
+    private static final char NEW_CHAR = '-';
+
+    public TariffHandler() {
+        tariffs = new HashSet<>();
+        tagsWithText = EnumSet.range(TariffXMLTag.INTRODUCTION_TIME, TariffXMLTag.TARIFFICATION);
+    }
+
+    public Set<Tariff> getTariffs() {
+        return tariffs;
     }
 
     @Override
-    public void endDocument() throws SAXException {
-        super.endDocument();
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
+        String mobilTariff = TariffXMLTag.MOBILE_TARIFF.toString();
+        String internetTariff = TariffXMLTag.INTERNET_TARIFF.toString();
+        if (mobilTariff.equals(qName)){
+            MobileTariff currentMobilTariff = new MobileTariff();
+            currentMobilTariff.setTariffCode(attributes.getValue(0));
+            if(attributes.getLength() == 2){
+                switch (attributes.getValue(1)){
+                    case("MTS"):
+                        currentMobilTariff.setOperator(OperatorName.MTS);
+                        break;
+                    case("LIVE"):
+                        currentMobilTariff.setOperator(OperatorName.LIFE);
+                        break;
+                    case ("BEELINE"):
+                        currentMobilTariff.setOperator(OperatorName.BEELINE);
+                }
+            }
+            currentTariff = currentMobilTariff;
+        }else if(internetTariff.equals(qName)){
+            currentTariff = new InternetTariff();
+        }else {
+            String constantName = toConstantName(qName);
+            TariffXMLTag tag = TariffXMLTag.valueOf(constantName);
+            if (tagsWithText.contains(tag)) {
+                currentXmlTag = tag;
+            }
+        }
+
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        super.startElement(uri, localName, qName, attributes);
+    public void endElement(String uri, String localName, String qName){
+        String mobilTariff = TariffXMLTag.MOBILE_TARIFF.toString();
+        String internetTariff = TariffXMLTag.INTERNET_TARIFF.toString();
+        if (mobilTariff.equals(qName) || internetTariff.equals(qName)){
+            tariffs.add(currentTariff);
+            System.out.println(currentTariff);
+            currentTariff = null;
+        }
     }
 
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
-        super.endElement(uri, localName, qName);
+    public void characters(char[] ch, int start, int length) {
+        String data = new String(ch, start, length).trim();
+        if (currentXmlTag != null){
+            switch (currentXmlTag){
+                case PAYROLL:
+                    currentTariff.setPayroll(Integer.parseInt(data));
+                    break;
+                case CONNECTION_PAY:
+                    currentTariff.setConnectionPay(Integer.parseInt(data));
+                    break;
+                case INTRODUCTION_TIME:
+                    currentTariff.setIntroductionTime(LocalDate.parse(data));
+                    break;
+                case TARIFFICATION:
+                    MobileTariff mobil = (MobileTariff) currentTariff;
+                    mobil.getCallPrice().setTariffication(Integer.parseInt(data));
+                    break;
+                case WITHIN_THE_NETWORK:
+                    mobil = (MobileTariff) currentTariff;
+                    mobil.getCallPrice().setWithinTheNetwork(Double.parseDouble(data));
+                    break;
+                case OFFLINE:
+                    mobil = (MobileTariff) currentTariff;
+                    mobil.getCallPrice().setOffline(Double.parseDouble(data));
+
+                    break;
+                case CITY_NETWORK:
+                    mobil = (MobileTariff) currentTariff;
+                    mobil.getCallPrice().setCityNetwork(Double.parseDouble(data));
+
+                    break;
+                case INTERNET_TRAFFIC:
+                    InternetTariff internet = (InternetTariff) currentTariff;
+                    internet.setInternetTraffic(Integer.parseInt(data));
+                    break;
+                case TRANSMISSION_SPEED:
+                    internet = (InternetTariff) currentTariff;
+                    internet.setTransmissionSpeed(Integer.parseInt(data));
+                    break;
+                default:
+                    throw new EnumConstantNotPresentException(
+                        currentXmlTag.getDeclaringClass(), currentXmlTag.name());
+            }
+        }
+        currentXmlTag = null;
     }
 
-    @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
-        super.characters(ch, start, length);
+    private String toConstantName(String string) {
+        return string.strip()
+                .replace(NEW_CHAR, REPLACE_CHAR)
+                .toUpperCase();
     }
 }

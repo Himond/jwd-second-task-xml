@@ -7,6 +7,9 @@ public class InternetTariff extends Tariff{
     private int internetTraffic;
     private int transmissionSpeed;
 
+    public InternetTariff() {
+    }
+
     public InternetTariff(int internetTraffic, int transmissionSpeed) {
         this.internetTraffic = internetTraffic;
         this.transmissionSpeed = transmissionSpeed;
@@ -56,7 +59,8 @@ public class InternetTariff extends Tariff{
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("InternetTariff{");
+        final StringBuilder sb = new StringBuilder(super.toString());
+        sb.append(" InternetTariff{");
         sb.append("internetTraffic=").append(internetTraffic);
         sb.append(", transmissionSpeed=").append(transmissionSpeed);
         sb.append('}');

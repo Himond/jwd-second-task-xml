@@ -10,4 +10,4 @@
 12:40:43.427 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 19 : 61 - cvc-id.2: There are multiple occurrences of ID value 'v1211'.
 12:40:43.429 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 19 : 61 - cvc-attribute.3: The value 'v1211' of attribute 'tariff-code' on element 'mobile-tariff' is not valid with respect to its type, 'tariffCode'.
 12:41:06.482 [main] FATAL by.training.xmltask.handler.TariffErrorHandler - 17 : 7 - The element type "call-price" must be terminated by the matching end-tag "</call-price>".
-12:41:06.484 [main] ERROR by.training.xmltask.validator.TariffXmlValidator - File src\main\resources\tariffs.xml is not valid:
+12:41:06.484 [main] ERROR by.training.xmltask.validator.TariffXmlValidator - File src\main\resources\tariffs.xml is not valid:15:10:50.183 [main] ERROR by.training.xmltask.handler.TariffErrorHandler - 19 : 75 - cvc-complex-type.3.2.2: Attribute 'type' is not allowed to appear in element 'mobile-tariff'.

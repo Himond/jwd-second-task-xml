@@ -4,7 +4,7 @@
           xmlns="http://www.example.com/tariffs"
           xsi:schemaLocation="http://www.example.сom/tariffs tariffs.xsd">
 
-    <mobile-tariff tariff-code="a22453322" operator-name="MTS">
+    <mobile-tariff tariff-code="a22453322">
         <payroll>25</payroll>
         <connection-pay>5</connection-pay>
         <introduction-time>2020-03-23</introduction-time>
