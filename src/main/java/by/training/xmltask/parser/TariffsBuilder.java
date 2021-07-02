@@ -3,6 +3,7 @@ package by.training.xmltask.parser;
 import by.training.xmltask.entity.Tariff;
 import by.training.xmltask.exception.TariffException;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,5 +18,5 @@ public abstract class TariffsBuilder {
         return tariffs;
     }
 
-    public abstract void buildTariffs(String filePath) throws TariffException;
+    public abstract void buildTariffs(String filePath) throws TariffException, IOException;
 }

@@ -4,9 +4,7 @@ import by.training.xmltask.entity.InternetTariff;
 import by.training.xmltask.entity.MobileTariff;
 import by.training.xmltask.entity.OperatorName;
 import by.training.xmltask.entity.Tariff;
-import by.training.xmltask.exception.TariffException;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 
@@ -35,22 +33,13 @@ public class TariffHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
-        String mobilTariff = TariffXMLTag.MOBILE_TARIFF.toString();
-        String internetTariff = TariffXMLTag.INTERNET_TARIFF.toString();
+        var mobilTariff = TariffXMLTag.MOBILE_TARIFF.toString();
+        var internetTariff = TariffXMLTag.INTERNET_TARIFF.toString();
         if (mobilTariff.equals(qName)){
             MobileTariff currentMobilTariff = new MobileTariff();
             currentMobilTariff.setTariffCode(attributes.getValue(0));
             if(attributes.getLength() == 2){
-                switch (attributes.getValue(1)){
-                    case("MTS"):
-                        currentMobilTariff.setOperator(OperatorName.MTS);
-                        break;
-                    case("LIVE"):
-                        currentMobilTariff.setOperator(OperatorName.LIFE);
-                        break;
-                    case ("BEELINE"):
-                        currentMobilTariff.setOperator(OperatorName.BEELINE);
-                }
+                currentMobilTariff.setOperator(OperatorName.valueOf(attributes.getValue(1)));
             }
             currentTariff = currentMobilTariff;
         }else if(internetTariff.equals(qName)){
@@ -67,11 +56,10 @@ public class TariffHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName){
-        String mobilTariff = TariffXMLTag.MOBILE_TARIFF.toString();
-        String internetTariff = TariffXMLTag.INTERNET_TARIFF.toString();
+        var mobilTariff = TariffXMLTag.MOBILE_TARIFF.toString();
+        var internetTariff = TariffXMLTag.INTERNET_TARIFF.toString();
         if (mobilTariff.equals(qName) || internetTariff.equals(qName)){
             tariffs.add(currentTariff);
-            System.out.println(currentTariff);
             currentTariff = null;
         }
     }
