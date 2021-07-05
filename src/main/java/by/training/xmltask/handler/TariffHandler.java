@@ -36,7 +36,7 @@ public class TariffHandler extends DefaultHandler {
         var mobilTariff = TariffXMLTag.MOBILE_TARIFF.toString();
         var internetTariff = TariffXMLTag.INTERNET_TARIFF.toString();
         if (mobilTariff.equals(qName)){
-            MobileTariff currentMobilTariff = new MobileTariff();
+            var currentMobilTariff = new MobileTariff();
             currentMobilTariff.setTariffCode(attributes.getValue(0));
             if(attributes.getLength() == 2){
                 currentMobilTariff.setOperator(OperatorName.valueOf(attributes.getValue(1)));
@@ -69,43 +69,34 @@ public class TariffHandler extends DefaultHandler {
         String data = new String(ch, start, length).trim();
         if (currentXmlTag != null){
             switch (currentXmlTag){
-                case PAYROLL:
-                    currentTariff.setPayroll(Integer.parseInt(data));
-                    break;
-                case CONNECTION_PAY:
-                    currentTariff.setConnectionPay(Integer.parseInt(data));
-                    break;
-                case INTRODUCTION_TIME:
-                    currentTariff.setIntroductionTime(LocalDate.parse(data));
-                    break;
-                case TARIFFICATION:
+                case PAYROLL -> currentTariff.setPayroll(Integer.parseInt(data));
+                case CONNECTION_PAY -> currentTariff.setConnectionPay(Integer.parseInt(data));
+                case INTRODUCTION_TIME -> currentTariff.setIntroductionTime(LocalDate.parse(data));
+                case TARIFFICATION ->{
                     MobileTariff mobil = (MobileTariff) currentTariff;
                     mobil.getCallPrice().setTariffication(Integer.parseInt(data));
-                    break;
-                case WITHIN_THE_NETWORK:
-                    mobil = (MobileTariff) currentTariff;
+                }
+                case WITHIN_THE_NETWORK -> {
+                    MobileTariff mobil = (MobileTariff) currentTariff;
                     mobil.getCallPrice().setWithinTheNetwork(Double.parseDouble(data));
-                    break;
-                case OFFLINE:
-                    mobil = (MobileTariff) currentTariff;
+                }
+                case OFFLINE -> {
+                    MobileTariff mobil = (MobileTariff) currentTariff;
                     mobil.getCallPrice().setOffline(Double.parseDouble(data));
-
-                    break;
-                case CITY_NETWORK:
-                    mobil = (MobileTariff) currentTariff;
+                }
+                case CITY_NETWORK -> {
+                    MobileTariff mobil = (MobileTariff) currentTariff;
                     mobil.getCallPrice().setCityNetwork(Double.parseDouble(data));
-
-                    break;
-                case INTERNET_TRAFFIC:
+                }
+                case INTERNET_TRAFFIC -> {
                     InternetTariff internet = (InternetTariff) currentTariff;
                     internet.setInternetTraffic(Integer.parseInt(data));
-                    break;
-                case TRANSMISSION_SPEED:
-                    internet = (InternetTariff) currentTariff;
+                }
+                case TRANSMISSION_SPEED -> {
+                    InternetTariff internet = (InternetTariff) currentTariff;
                     internet.setTransmissionSpeed(Integer.parseInt(data));
-                    break;
-                default:
-                    throw new EnumConstantNotPresentException(
+                }
+                default -> throw new EnumConstantNotPresentException(
                         currentXmlTag.getDeclaringClass(), currentXmlTag.name());
             }
         }

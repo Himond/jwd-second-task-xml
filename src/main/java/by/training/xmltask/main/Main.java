@@ -1,6 +1,7 @@
 package by.training.xmltask.main;
 
 import by.training.xmltask.exception.TariffException;
+import by.training.xmltask.parser.TariffBuilderFactory;
 import by.training.xmltask.parser.TariffsDomBuilder;
 import by.training.xmltask.parser.TariffsSaxBuilder;
 import by.training.xmltask.parser.TariffsStaxBuilder;
@@ -20,6 +21,11 @@ public class Main {
         TariffsStaxBuilder staxBuilder = new TariffsStaxBuilder();
         staxBuilder.buildTariffs("src\\main\\resources\\tariffs.xml");
         System.out.println(staxBuilder.getTariffs());
+
+        TariffsDomBuilder staxBuilder1 = (TariffsDomBuilder) TariffBuilderFactory.createTariffBuilder("DOM");
+        staxBuilder1.buildTariffs("src\\main\\resources\\tariffs.xml");
+        System.out.println(staxBuilder1.getTariffs());
+
     }
 
 

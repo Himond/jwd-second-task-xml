@@ -81,17 +81,18 @@ public class TariffsStaxBuilder extends TariffsBuilder{
         while (reader.hasNext()) {
             int type = reader.next();
             switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
+                case XMLStreamConstants.START_ELEMENT -> {
                     name = reader.getLocalName();
                     String constantName = toConstantName(name);
                     TariffXMLTag tag = TariffXMLTag.valueOf(constantName);
                     initializeField(reader, tag, tariff);
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
+                }
+                case XMLStreamConstants.END_ELEMENT -> {
                     name = reader.getLocalName();
                     if (name.equals(MOBILE_TARIFF.toString()) || name.equals(INTERNET_TARIFF.toString())) {
                         return;
                     }
+                }
             }
         }
     }
@@ -102,70 +103,60 @@ public class TariffsStaxBuilder extends TariffsBuilder{
                 .orElseThrow(() -> new TariffException("Unable to get text content"));
 
         switch (tag){
-            case PAYROLL:
-                tariff.setPayroll(Integer.parseInt(data));
-                break;
-            case CONNECTION_PAY:
-                tariff.setConnectionPay(Integer.parseInt(data));
-                break;
-            case INTRODUCTION_TIME:
-                tariff.setIntroductionTime(LocalDate.parse(data));
-                break;
-            case CALL_PRICE:
+            case PAYROLL -> tariff.setPayroll(Integer.parseInt(data));
+            case CONNECTION_PAY -> tariff.setConnectionPay(Integer.parseInt(data));
+            case INTRODUCTION_TIME -> tariff.setIntroductionTime(LocalDate.parse(data));
+            case CALL_PRICE -> {
                 MobileTariff mobil = (MobileTariff) tariff;
                 mobil.setCallPrice(getXmlCallPrice(reader));
-                break;
-            case INTERNET_TRAFFIC:
+            }
+            case INTERNET_TRAFFIC -> {
                 InternetTariff internet = (InternetTariff) tariff;
                 internet.setInternetTraffic(Integer.parseInt(data));
-                break;
-            case TRANSMISSION_SPEED:
-                internet = (InternetTariff) tariff;
+            }
+            case TRANSMISSION_SPEED -> {
+                InternetTariff internet = (InternetTariff) tariff;
                 internet.setTransmissionSpeed(Integer.parseInt(data));
-                break;
-            default:
-                throw new EnumConstantNotPresentException(
+            }
+            default -> throw new EnumConstantNotPresentException(
                         tag.getDeclaringClass(), tag.name());
         }
     }
 
-    private CallPrice getXmlCallPrice(XMLStreamReader reader) throws XMLStreamException {
-        CallPrice callPrice = new CallPrice();
+    private CallPrice getXmlCallPrice(XMLStreamReader reader) throws XMLStreamException, TariffException {
+        var callPrice = new CallPrice();
         int type;
         String name;
 
         while (reader.hasNext()) {
             type = reader.next();
+
             switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
+                case XMLStreamConstants.START_ELEMENT -> {
                     name = reader.getLocalName();
                     TariffXMLTag tag = TariffXMLTag.valueOf(toConstantName(name));
+                    String data = getTextContent(reader)
+                            .orElseThrow(() -> new TariffException("Unable to get text content"));
                     switch (tag) {
-                        case TARIFFICATION:
-                            callPrice.setTariffication(Integer.parseInt(getTextContent(reader).get()));
-                            break;
-                        case WITHIN_THE_NETWORK:
-                            callPrice.setWithinTheNetwork(Double.parseDouble(getTextContent(reader).get()));
-                            break;
-                        case OFFLINE:
-                            callPrice.setOffline(Double.parseDouble(getTextContent(reader).get()));
-                            break;
-                        case CITY_NETWORK:
-                            callPrice.setCityNetwork(Double.parseDouble(getTextContent(reader).get()));
-                            break;
-                        default:
-                            throw new EnumConstantNotPresentException(
-                                    tag.getDeclaringClass(), tag.name());
+                        case TARIFFICATION -> callPrice.setTariffication(Integer.parseInt(data));
+                        case WITHIN_THE_NETWORK -> callPrice.setWithinTheNetwork(Double.parseDouble(data));
+                        case OFFLINE -> callPrice.setOffline(Double.parseDouble(data));
+                        case CITY_NETWORK -> callPrice.setCityNetwork(Double.parseDouble(data));
+                        default -> throw new EnumConstantNotPresentException(
+                                tag.getDeclaringClass(), tag.name());
                     }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
+                }
+                case XMLStreamConstants.END_ELEMENT -> {
                     name = reader.getLocalName();
                     if (TariffXMLTag.valueOf(toConstantName(name)) == CALL_PRICE) {
                         return callPrice;
                     }
+                }
+
             }
         }
-        return null;
+        logger.error("Unknown element in tag <call_price>");
+        throw new TariffException("Unknown element in tag <call_price>");
     }
 
 
