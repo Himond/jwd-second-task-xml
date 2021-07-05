@@ -1,8 +1,8 @@
-package by.training.xmltask.parser;
+package by.training.xmltask.builder;
 
 import by.training.xmltask.entity.*;
 import by.training.xmltask.exception.TariffException;
-import static by.training.xmltask.handler.TariffXMLTag.*;
+import static by.training.xmltask.builder.TariffXMLTag.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Element;

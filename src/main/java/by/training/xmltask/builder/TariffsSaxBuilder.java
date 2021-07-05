@@ -1,4 +1,4 @@
-package by.training.xmltask.parser;
+package by.training.xmltask.builder;
 
 import by.training.xmltask.exception.TariffException;
 import by.training.xmltask.handler.TariffErrorHandler;

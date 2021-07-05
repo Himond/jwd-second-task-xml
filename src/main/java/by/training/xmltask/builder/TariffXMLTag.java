@@ -1,4 +1,4 @@
-package by.training.xmltask.handler;
+package by.training.xmltask.builder;
 
 public enum TariffXMLTag {
 

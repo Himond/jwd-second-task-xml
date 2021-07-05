@@ -1,5 +1,6 @@
 package by.training.xmltask.handler;
 
+import by.training.xmltask.builder.TariffXMLTag;
 import by.training.xmltask.entity.InternetTariff;
 import by.training.xmltask.entity.MobileTariff;
 import by.training.xmltask.entity.OperatorName;

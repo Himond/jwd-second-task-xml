@@ -2,10 +2,10 @@ package by.training.xmltask.test;
 
 import by.training.xmltask.entity.*;
 import by.training.xmltask.exception.TariffException;
-import by.training.xmltask.parser.TariffBuilderFactory;
-import by.training.xmltask.parser.TariffsDomBuilder;
-import by.training.xmltask.parser.TariffsSaxBuilder;
-import by.training.xmltask.parser.TariffsStaxBuilder;
+import by.training.xmltask.builder.TariffBuilderFactory;
+import by.training.xmltask.builder.TariffsDomBuilder;
+import by.training.xmltask.builder.TariffsSaxBuilder;
+import by.training.xmltask.builder.TariffsStaxBuilder;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
