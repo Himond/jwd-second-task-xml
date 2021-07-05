@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tariffs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.example.com/tariffs"
+          xsi:schemaLocation="http://www.example.сom/tariffs tariffs.xsd">
+
+    <mobile-tariff tariff-code="a1254884">
+        <payroll>25</payroll>
+        <introduction-time>2020-03-23</introduction-time>
+        <call-price>
+            <tariffication>20</tariffication>
+            <within-the-network>0.1</within-the-network>
+            <offline>0.2</offline>
+            <city-network>0.5</city-network>
+        </call-price>
+    </mobile-tariff>
+
+    <mobile-tariff operator-name="LIFE">
+        <payroll>30</payroll>
+        <connection-pay>1</connection-pay>
+        <introduction-time>2021-02-12</introduction-time>
+        <call-price>
+            <tariffication>60</tariffication>
+            <within-the-network>0.5</within-the-network>
+            <offline>1.5</offline>
+            <city-network>2.1</city-network>
+        </call-price>
+    </mobile-tariff>
+
+
+</tariffs>

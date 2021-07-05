@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class TariffValidTest {
 
-    private String xmlPath = "src\\main\\resources\\tariffs.xml";
+    private String xmlPath = "src\\test\\resources\\invalidtest.xml";
 
     @Test
     public void validTest() throws TariffException {

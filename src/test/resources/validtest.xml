@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tariffs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.example.com/tariffs"
+          xsi:schemaLocation="http://www.example.сom/tariffs tariffs.xsd">
+
+    <mobile-tariff tariff-code="a12345" operator-name="BEELINE">
+        <payroll>30</payroll>
+        <connection-pay>10</connection-pay>
+        <introduction-time>2020-03-23</introduction-time>
+        <call-price>
+            <tariffication>20</tariffication>
+            <within-the-network>0.12</within-the-network>
+            <offline>0.15</offline>
+            <city-network>0.59</city-network>
+        </call-price>
+    </mobile-tariff>
+
+    <internet-tariff>
+        <payroll>100</payroll>
+        <connection-pay>50</connection-pay>
+        <introduction-time>2021-02-11</introduction-time>
+        <internet-traffic>5000</internet-traffic>
+        <transmission-speed>12500</transmission-speed>
+    </internet-tariff>
+
+</tariffs>
